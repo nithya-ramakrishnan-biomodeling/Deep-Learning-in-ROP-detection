@@ -13,13 +13,7 @@ link to training dataset [https://www.kaggle.com/datasets/jananowakova/retinal-i
 ## Directory structure
 The datafiles are to be stored in the below directory structure inside the parent directory.
 
-Data/
-├── dataset1/
-│   ├── Positive/
-│   └── Negative/
-└── dataset2/
-    ├── Positive/
-    └── Negative/
+<pre> ``` Data/ ├── dataset1/ │ ├── Positive/ │ └── Negative/ ├── dataset2/ │ ├── Positive/ │ └── Negative/ ``` </pre>
     
 ## Model info
 A total of 5 models were defined and trained on the above dataset. The performance of each model is compared and evaluated using the private dataset.
