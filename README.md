@@ -22,7 +22,7 @@ The datafiles are to be stored in the below directory structure inside the paren
     │ └── Negative/
 </pre>
 
-Change the directory name in the main.py file as "./Data/<dataset_name>/"
+Change the directory path in the main.py file as "./Data/<dataset_name>/"
     
 ## Model info
 A total of 5 models were defined and trained on the above dataset. The performance of each model is compared and evaluated using the private dataset.
