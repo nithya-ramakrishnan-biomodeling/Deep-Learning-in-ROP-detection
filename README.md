@@ -10,6 +10,17 @@ Publicly available dataset is used for training the model, and it is tested on a
 For training, only images upto stage 3 were combined and used along with negative class. Class balance was ensured before passing to the model for training.
 link to training dataset [https://www.kaggle.com/datasets/jananowakova/retinal-image-dataset-of-infants-and-rop](https://www.kaggle.com/datasets/jananowakova/retinal-image-dataset-of-infants-and-rop)
 
+## Directory structure
+The datafiles are to be stored in the below directory structure inside the parent directory.
+
+Data/
+├── dataset1/
+│   ├── Positive/
+│   └── Negative/
+└── dataset2/
+    ├── Positive/
+    └── Negative/
+    
 ## Model info
 A total of 5 models were defined and trained on the above dataset. The performance of each model is compared and evaluated using the private dataset.
 Captum package was used for the explainability of the models. Link to the documentation: [https://captum.ai/api/attribution.html](https://captum.ai/api/attribution.html)
