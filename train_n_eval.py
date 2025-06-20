@@ -81,6 +81,7 @@ class TrainEval:
                 print(f"Validation Accuracy for the Epoch {epoch+1}: {100 * correct / total:.2f}%")
                 
             torch.save(self.model.state_dict(), self.model_path)
+            self.plot_loss_curve()
             print(f"Model saved to {self.model_path}")
             
     def evaluate_model(self):
