@@ -35,7 +35,7 @@ def run(model_dict):
         optimizer = optim.Adam(model.parameters(), lr=0.001)    
         scheduler = ReduceLROnPlateau(optimizer, mode="min", factor=0.1, patience=3)
         if not os.path.exists("./Trained_Models/"):
-            os.makedir("./Trained_Models/")
+            os.makedirs("./Trained_Models/")
         model_path = f"./Trained_Models/{pth_filename}"
         train_eval = TrainEval(model, train_dir, test_dir, model_path, num_epochs)
         train_eval.train_model(optimizer, criterion, scheduler)
