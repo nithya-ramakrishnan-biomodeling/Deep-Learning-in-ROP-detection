@@ -5,6 +5,19 @@ import numpy as np
 
 
 class Preprocessor:
+    def __init__(self, seed=None):
+        self.seed = seed
+        self.set_seed()
+
+
+    def set_seed(self):
+        if self.seed is not None:
+            random.seed(self.seed)
+            np.random.seed(self.seed)
+            torch.manual_seed(self.seed)
+            if torch.cuda.is_available():
+                torch.cuda.manual_seed_all(self.seed)
+                
     def augment_transform1(self):
         """Transform which does both random cropping and rotation along with preprocessing"""
         transform = v2.Compose([
