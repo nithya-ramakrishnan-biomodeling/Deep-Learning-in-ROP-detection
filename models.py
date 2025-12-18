@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from torchvision.models import resnet18, efficientnet_b0, EfficientNet_B0_Weights
+from torchvision.models import resnet18, efficientnet_b0, EfficientNet_B0_Weights, ResNet18_Weights
 
 
 
@@ -10,9 +10,9 @@ class CustomCNN(nn.Module):
     
     def __init__(self):
         super(CustomCNN, self).__init__()
-        self.conv1 = nn.Conv2d(3, 6, 3, stride=2)
-        self.pool = nn.MaxPool2d(3, 2)
-        self.conv2 = nn.Conv2d(6, 16, 3, stride=2)
+        self.conv1 = nn.Conv2d(3, 6, 3, stride=1, padding=1)
+        self.pool = nn.MaxPool2d(2, 2)
+        self.conv2 = nn.Conv2d(6, 16, 3, stride=1, padding=1)
         self.bn1 = nn.BatchNorm2d(6)
         self.bn2 = nn.BatchNorm2d(16)
 
@@ -56,7 +56,7 @@ class ResNet18_pretrained(nn.Module):
     
     def __init__(self):
         super(ResNet18_pretrained, self).__init__()
-        self.model = resnet18(weights='IMAGENET1K_V1')
+        self.model = resnet18(weights=ResNet18_Weights.DEFAULT)
         self.model.fc = nn.Linear(self.model.fc.in_features, 1)
 
     def forward(self, x):
