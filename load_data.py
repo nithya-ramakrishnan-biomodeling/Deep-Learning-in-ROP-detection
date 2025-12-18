@@ -7,9 +7,9 @@ from data_preprocess import Preprocessor
 # For augmentation of the training dataset
 class AugmentedDataset(Dataset):
     
-    def __init__(self, root_dir, augment_repeats=10):
+    def __init__(self, root_dir, augment_repeats=10, seed=None):
         self.root = root_dir
-        preprocessor = Preprocessor()
+        preprocessor = Preprocessor(seed=seed)
         self.transform1 = preprocessor.augment_transform1()
         self.transform2 = preprocessor.augment_transform2()
         self.augment_repeats = augment_repeats 
@@ -37,9 +37,9 @@ class AugmentedDataset(Dataset):
 
 # Custom dataset loader for testing
 class TestDataset(Dataset):
-    def __init__(self, root_dir):
+    def __init__(self, root_dir, seed=None):
         self.root = root_dir
-        preprocessor = Preprocessor()
+        preprocessor = Preprocessor(seed=seed)
         self.transform = preprocessor.test_transform()
 
         negative_path = os.path.join(self.root, "Negative")
