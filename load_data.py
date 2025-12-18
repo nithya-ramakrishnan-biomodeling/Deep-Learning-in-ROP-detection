@@ -7,12 +7,14 @@ from data_preprocess import Preprocessor
 # For augmentation of the training dataset
 class AugmentedDataset(Dataset):
     
-    def __init__(self, root_dir, augment_repeats=10, seed=None):
+    def __init__(self, root_dir, augment_repeats=8, augment=False, seed=None):
         self.root = root_dir
         preprocessor = Preprocessor(seed=seed)
         self.transform1 = preprocessor.augment_transform1()
         self.transform2 = preprocessor.augment_transform2()
+        self.transform3 = preprocessor.test_transform()
         self.augment_repeats = augment_repeats 
+        self.augment = augment
 
         negative_path = os.path.join(self.root, "Negative")
         positive_path = os.path.join(self.root, "Positive")
@@ -29,7 +31,10 @@ class AugmentedDataset(Dataset):
         
         img_path, label = self.data[idx % len(self.data)]  
         img = Image.open(img_path)
-        transform = self.transform1 if torch.rand(1).item() > 0.5 else self.transform2  
+        if self.augment:
+            transform = self.transform1 if torch.rand(1).item() > 0.5 else self.transform2  
+        else:
+            transform = self.transform3
         img = transform(img)
 
         return img, label
