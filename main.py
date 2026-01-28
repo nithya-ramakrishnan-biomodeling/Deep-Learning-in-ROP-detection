@@ -87,7 +87,7 @@ def main():
     dir1 = "/kaggle/input/vittala-dataset/Vittala_Dataset"
     dir2 = "/kaggle/input/kaggle-dataset/Kaggle_Dataset"
     
-    # Experiment 1 - Train on vittala dataset and test on vittala dataset
+    # Experiment 1 - Train on vittala dataset and test on opensource dataset
 
     models = { 
               CustomCNN():"V_customCNN.pth",
@@ -101,7 +101,7 @@ def main():
     sensitivity_list.append(sensitivity1)
     specificity_list.append(specificity1)
     
-    # Experiment 2 - Train on opensource dataset and test on opensource dataset
+    # Experiment 2 - Train on opensource dataset and test on vittala dataset
     models = { 
               CustomCNN():"K_customCNN.pth",
               ResNet18_pretrained():"K_ResNet18_pretrained.pth",
